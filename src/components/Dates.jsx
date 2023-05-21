@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 export const Dates = ({ text }) => {
   const spacedText = text.split("").join(" ").toUpperCase();
 
@@ -12,4 +13,8 @@ export const Dates = ({ text }) => {
       </div>
     </>
   );
+};
+
+Dates.propTypes = {
+  text: PropTypes.string.isRequired,
 };

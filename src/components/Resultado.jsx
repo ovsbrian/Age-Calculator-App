@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export const Result = ({ numero, texto }) => {
   const mostrarTexto = texto.toLowerCase();
   return (
@@ -8,4 +10,9 @@ export const Result = ({ numero, texto }) => {
       </div>
     </>
   );
+};
+
+Result.propTypes = {
+  numero: PropTypes.number.isRequired,
+  texto: PropTypes.string.isRequired,
 };
