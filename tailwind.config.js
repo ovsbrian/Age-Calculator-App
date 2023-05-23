@@ -2,6 +2,9 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    fontFamily: {
+      poppins: ["Poppins", "sans-serif"],
+    },
     borderRadius: {
       none: "0",
       sm: "0.125rem",
@@ -12,6 +15,12 @@ export default {
     extend: {
       spacing: {
         128: "30rem",
+      },
+
+      fontWeight: {
+        "poppins-regular": 400,
+        "poppins-bold": 700,
+        "poppins-extrabold": 800,
       },
     },
   },
