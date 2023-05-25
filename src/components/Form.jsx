@@ -46,11 +46,13 @@ export const Form = () => {
       alert(
         "Por favor, ingrese un máximo de 2 dígitos para el día y el mes, y un mínimo y máximo de 4 dígitos para el año"
       );
-    } else if ((day, year, month)) {
+    } else if (day && year && month) {
       const result = calcularEdad(year, month, day);
       setEdad(result.edad);
       setMes(result.meses);
       setDia(result.dias);
+    } else {
+      alert("ingrese datos");
     }
   };
 
