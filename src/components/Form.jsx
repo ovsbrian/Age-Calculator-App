@@ -9,19 +9,14 @@ const calcularEdad = (año, mes, dia) => {
   let edad = today.getFullYear() - año;
   let meses = today.getMonth() + 1 - mes;
   let dias = today.getDate() - dia;
-
-  if (dias < 0 || edad < 0 || mes === 0 || mes < 0 || mes > 12) {
-    return null;
-  }
-  if (meses < 0 || (meses === 0 && dias < 0)) {
-    edad--;
-    meses += 12;
-  }
-
   if (dias < 0) {
     meses--;
-    const ultimoMes = new Date(edad, meses, 0);
+    const ultimoMes = new Date(today.getFullYear(), today.getMonth(), 0);
     dias += ultimoMes.getDate();
+  }
+  if (meses < 0) {
+    edad--;
+    meses += 12;
   }
   return { edad, meses, dias };
 };
@@ -47,7 +42,12 @@ export const Form = () => {
         "Por favor, ingrese un máximo de 2 dígitos para el día y el mes, y un mínimo y máximo de 4 dígitos para el año"
       );
     } else if (day && year && month) {
-      const result = calcularEdad(year, month, day);
+      const result = calcularEdad(
+        parseInt(year),
+        parseInt(month),
+        parseInt(day)
+      );
+
       setEdad(result.edad);
       setMes(result.meses);
       setDia(result.dias);
