@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-export const Dates = ({ text, textFondo, onChange }) => {
+export const Dates = ({ text, textFondo, onChange, id }) => {
   const spacedText = text.split("").join(" ").toUpperCase();
   const fondoText = textFondo.toUpperCase();
   return (
@@ -14,6 +14,7 @@ export const Dates = ({ text, textFondo, onChange }) => {
           type="number"
           placeholder={fondoText}
           onChange={onChange}
+          id={id}
         />
       </div>
     </>
