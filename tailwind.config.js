@@ -16,7 +16,9 @@ export default {
       spacing: {
         128: "30rem",
       },
-
+      fontSize: {
+        "text-custom": "10px",
+      },
       fontWeight: {
         "poppins-regular": 400,
         "poppins-bold": 700,
