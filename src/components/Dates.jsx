@@ -32,7 +32,7 @@ export const Dates = ({
           id={id}
         />
         {errore === true ? (
-          <div className="absolute bottom-96 flex">
+          <div className="  flex     ">
             <span className="text-text-custom italic text-red-400 ">
               This field is required
             </span>
@@ -41,7 +41,7 @@ export const Dates = ({
           ""
         )}
         {noValid === true ? (
-          <div className="absolute bottom-96 flex">
+          <div className="flex   ">
             <span className="text-text-custom italic text-red-400 ">
               Must be a valid {nombre}
             </span>
