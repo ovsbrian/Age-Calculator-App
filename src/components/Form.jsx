@@ -2,42 +2,7 @@ import { useState } from "react";
 import { Boton } from "./Boton";
 import { Dates } from "./Dates";
 import { Result } from "./Resultado";
-
-const validarFecha = (año, mes, dia) => {
-  const today = new Date();
-
-  if (
-    año > today.getFullYear() ||
-    mes < 1 ||
-    mes > 12 ||
-    dia < 1 ||
-    dia > new Date(año, mes, 0).getDate()
-  ) {
-    return false;
-  }
-  return true;
-};
-
-const calcularEdad = (año, mes, dia) => {
-  if (!validarFecha(año, mes, dia)) {
-    return null;
-  }
-
-  const today = new Date();
-  let edad = today.getFullYear() - año;
-  let meses = today.getMonth() + 1 - mes;
-  let dias = today.getDate() - dia;
-  if (dias < 0) {
-    meses--;
-    const ultimoMes = new Date(today.getFullYear(), today.getMonth(), 0);
-    dias += ultimoMes.getDate();
-  }
-  if (meses < 0) {
-    edad--;
-    meses += 12;
-  }
-  return { edad, meses, dias };
-};
+import { calcularEdad } from "../functions/functions";
 
 export const Form = () => {
   const [edad, setEdad] = useState(0);
@@ -67,17 +32,13 @@ export const Form = () => {
         parseInt(month),
         parseInt(day)
       );
-      if (result === null) {
-        setFechaNoValida({
-          day: day < 1 || day > new Date(year, month, 0).getDate(),
-          month: month < 1 || month > 12,
-          year: year > new Date().getFullYear(),
-        });
-      } else {
-        setEdad(result.edad);
-        setMeses(result.meses);
-        setDias(result.dias);
-      }
+      result === null
+        ? setFechaNoValida({
+            day: day < 1 || day > new Date(year, month, 0).getDate(),
+            month: month < 1 || month > 12,
+            year: year > new Date().getFullYear(),
+          })
+        : (setEdad(result.edad), setMeses(result.meses), setDias(result.dias));
     } else {
       setErrorFecha({
         day: !day,
